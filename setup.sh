@@ -17,9 +17,9 @@ set -e
 echo -e "What is your project name?"
 read name
 
-sed -i -e "s/FNAECSTemplate/${name}/s" FNAECSTemplate/FNAECSTemplate.csproj
-sed -i -e "s/FNAECSTemplate/${name}/s" FNAECSTemplate.sln
-sed -i -e "s/Game1/${name}/s" FNAECSTemplate/Game1.cs
+sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/FNAECSTemplate.csproj
+sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate.sln
+sed -i -e "s/Game1/${name}/g" FNAECSTemplate/Game1.cs
 
 
 mv "FNAECSTemplate.sln" "${name}.sln"
