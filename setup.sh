@@ -3,16 +3,16 @@
 # Exit immediately on error
 set -e
 
-# mkdir -p fnalibs
-# cd fnalibs
+mkdir -p fnalibs
+cd fnalibs
 
-# echo -e "\e[32mDownloading fnalibs...\e[m"
-# curl -O https://fna.flibitijibibo.com/archive/fnalibs.tar.bz2
+echo -e "\e[32mDownloading fnalibs...\e[m"
+curl -O https://fna.flibitijibibo.com/archive/fnalibs.tar.bz2
 
-# echo -e "\e[32mExtracting fnalibs...\e[m"
-# tar -xf fnalibs.tar.bz2
+echo -e "\e[32mExtracting fnalibs...\e[m"
+tar -xf fnalibs.tar.bz2
 
-# cd ..
+cd ..
 
 echo -e "What is your project name?"
 read name
