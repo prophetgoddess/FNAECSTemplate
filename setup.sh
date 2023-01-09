@@ -25,6 +25,6 @@ sed -i -e "s/Game1/${name}" FNAECSTemplate/Game1.cs
 mv "FNAECSTemplate.sln" "${name}.sln"
 mv "FNAECSTemplate/FNAECSTemplate.csproj" "FNAECSTemplate/${name}.csproj"
 mv "FNAECSTemplate/Game1.cs" "FNAECSTemplate/${name}.cs"
-rename "FNAECSTemplate" "${name}"
+mv "FNAECSTemplate" "${name}"
 
 echo -e "\e[32mDone!\e[m"
