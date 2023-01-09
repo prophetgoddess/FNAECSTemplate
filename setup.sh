@@ -14,6 +14,8 @@ tar -xf fnalibs.tar.bz2
 
 cd ..
 
+git submodule update --init --recursive
+
 echo -e "What is your project name?"
 read name
 
