@@ -1,14 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<ItemGroup>
-		<Reference Include="System" />
-		<Reference Include="System.Core" />
-		<Reference Include="System.Data" />
-		<Reference Include="System.Xml" />
-		<Reference Include="System.Numerics" />
-		<Reference Include="System.Runtime.CompilerServices.Unsafe">
-			<HintPath Condition=" '$(OS)' != 'Windows_NT' ">/usr/lib/mono/4.5/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-		</Reference>
-	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FNA\FNA.Core.csproj" />
     <ProjectReference Include="..\MoonTools.ECS\MoonTools.ECS.csproj" />
