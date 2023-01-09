@@ -19,8 +19,8 @@ read name
 
 sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/FNAECSTemplate.csproj
 sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate.sln
-sed -i -e "s/FNAECSTemplate/${name}/g" vscode/launch.json
-sed -i -e "s/FNAECSTemplate/${name}/g" vscode/tasks.json
+sed -i -e "s/FNAECSTemplate/${name}/g" .vscode/launch.json
+sed -i -e "s/FNAECSTemplate/${name}/g" .vscode/tasks.json
 sed -i -e "s/Game1/${name}/g" FNAECSTemplate/Game1.cs
 
 
