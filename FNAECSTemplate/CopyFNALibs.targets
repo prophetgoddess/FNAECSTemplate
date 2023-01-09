@@ -2,13 +2,13 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
 	<ItemGroup Condition=" '$(OS)' == 'Windows_NT' ">
-		<Content Include="..\natives\x64\*.dll">
+		<Content Include="..\fnalibs\x64\*.dll">
 			<Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
 	<ItemGroup Condition=" '$(OS)' != 'Windows_NT' ">
-		<Content Include="..\natives\lib64\*.*">
+		<Content Include="..\fnalibs\lib64\*.*">
 			<Link>lib64\%(RecursiveDir)%(Filename)%(Extension)</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
