@@ -24,8 +24,6 @@ based primarily on [darkerbit's FNA template](https://github.com/darkerbit/FNATe
 
 ## license
 
-```
-
 ANTI-CAPITALIST SOFTWARE LICENSE (v 1.4)
 
 Copyright © 2023 Cassandra Lugo
@@ -47,5 +45,3 @@ d. An organization that seeks shared profit for all of its members, and allows n
 4. If the User is an organization, then the User is not law enforcement or military, or working for or under either.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT EXPRESS OR IMPLIED WARRANTY OF ANY KIND, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-```
