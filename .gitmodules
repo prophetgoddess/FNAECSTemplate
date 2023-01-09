@@ -1,0 +1,6 @@
+[submodule "FNA"]
+	path = FNA
+	url = https://github.com/FNA-XNA/FNA
+[submodule "MoonTools.ECS"]
+	path = MoonTools.ECS
+	url = https://gitea.moonside.games/MoonsideGames/MoonTools.ECS
