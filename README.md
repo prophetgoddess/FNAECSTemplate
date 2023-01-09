@@ -9,7 +9,7 @@ MoonTools.ECS is an entity component system library made by my friend evan. it i
 ## instructions
 
 - clone this repository into a folder with the name of your project by running `git clone https://github.com/prophetgoddess/FNAECSTemplate <PROJECTNAME>`
-- `cd` into that directory and run `setup.sh`. this should rename the project folder, solution, file, and namespace according to your project name. 
+- `cd` into that directory and run `setup.sh`. if you're on windows, i recommend using git bash for this. this should rename the project folder, solution, file, and namespace according to your project name. 
 
 ## credits
 

@@ -2,7 +2,7 @@ using System;
 
 using Microsoft.Xna.Framework;
 
-namespace FNATemplate
+namespace FNAECSTemplate
 {
     public class Game1 : Game
     {
