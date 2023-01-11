@@ -8,7 +8,6 @@ using FNAECSTemplate.Components;
 using FNAECSTemplate.Renderers;
 using SpriteFontPlus;
 
-
 namespace FNAECSTemplate
 {
     public class Game1 : Game

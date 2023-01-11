@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FNA.Core", "FNA\FNA.Core.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoonTools.ECS", "MoonTools.ECS\MoonTools.ECS.csproj", "{C095F9FB-5718-4161-A036-077B7F77FA66}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpriteFontPlus", "SpriteFontPlus", "{3C257573-956E-4071-B3C1-4C2C5C3FF145}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpriteFontPlus.FNA.Core", "SpriteFontPlus\src\SpriteFontPlus.FNA.Core.csproj", "{F0377ED2-E6BE-4A1C-B039-5C63D4C241FE}"
 EndProject
 Global

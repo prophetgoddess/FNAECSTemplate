@@ -5,10 +5,13 @@ using Microsoft.Xna.Framework.Graphics;
 using MoonTools.ECS;
 using FNAECSTemplate.Components;
 
-
-
 namespace FNAECSTemplate.Renderers
 {
+    /*
+    this is a renderer. a renderer is just like a system, 
+    but it lacks the capability to call Set() and update components.
+    *never* update components from within a renderer.
+    */
     public class ExampleRenderer : MoonTools.ECS.Renderer
     {
         private Filter ExampleFilter { get; }

@@ -15,6 +15,6 @@
     <Platforms>x64</Platforms>
   </PropertyGroup>
   <Import Project="$(SolutionDir)NativeAOT_Console.targets" Condition="Exists('$(SolutionDir)NativeAOT_Console.targets')" />
-  <Import Project="CopyFNALibs.targets" />
+  <Import Project="CopyLibs.targets" />
   <Import Project="CopyContent.targets" />
 </Project>
