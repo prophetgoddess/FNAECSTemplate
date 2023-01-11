@@ -6,6 +6,8 @@ FNA is a game programming library that exists to preserve microsoft's XNA librar
 
 MoonTools.ECS is an entity component system library made by my friend evan. it is as far as i know the best available ECS library for C#. 
 
+i also use [FontStashSharp](https://github.com/FontStashSharp/FontStashSharp) for text loading and rendering.
+
 ## prerequisites
 
 - [git](https://git-scm.com) (obviously)
