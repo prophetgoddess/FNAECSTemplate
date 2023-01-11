@@ -1,23 +1,23 @@
 using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
 using MoonTools.ECS;
 using FNAECSTemplate.Systems;
 using FNAECSTemplate.Components;
 using FNAECSTemplate.Renderers;
+using SpriteFontPlus;
 
 
 namespace FNAECSTemplate
 {
     public class Game1 : Game
     {
-        private GraphicsDeviceManager GraphicsDeviceManager { get; }
-        private ContentManager ContentManager { get; }
+        GraphicsDeviceManager GraphicsDeviceManager { get; }
 
-        private static World World { get; } = new World();
-        private static ExampleSystem? ExampleSystem;
-        private static ExampleRenderer? ExampleRenderer;
+        static World World { get; } = new World();
+        static ExampleSystem? ExampleSystem;
+        static ExampleRenderer? ExampleRenderer;
 
         SpriteBatch SpriteBatch;
         SpriteFont ExampleFont;
@@ -33,6 +33,7 @@ namespace FNAECSTemplate
         private Game1()
         {
             GraphicsDeviceManager = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
 
             GraphicsDeviceManager.PreferredBackBufferWidth = 1024;
             GraphicsDeviceManager.PreferredBackBufferHeight = 768;
@@ -45,7 +46,29 @@ namespace FNAECSTemplate
 
         protected override void LoadContent()
         {
-            SpriteBatch = new SpriteBatch(GraphicsDeviceManager.GraphicsDevice);
+            /*
+            CONTENT
+            */
+
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
+
+            ExampleFont = TtfFontBaker.Bake(
+                File.ReadAllBytes(
+                    Path.Combine(
+                        Content.RootDirectory, "opensans.ttf"
+                    )
+                ),
+                64,
+                1024,
+                1024,
+                new[]
+                {
+                    CharacterRange.BasicLatin,
+                    CharacterRange.LatinExtendedA,
+                    CharacterRange.LatinExtendedB,
+                    CharacterRange.Latin1Supplement
+                }
+            ).CreateSpriteFont(GraphicsDevice);
 
             /*
             SYSTEMS
@@ -55,7 +78,17 @@ namespace FNAECSTemplate
             /*
             RENDERERS
             */
-            ExampleRenderer = new ExampleRenderer(World, SpriteBatch);
+            ExampleRenderer = new ExampleRenderer(World, SpriteBatch, ExampleFont);
+
+            /*
+            ENTITIES
+            */
+
+            for (int i = 0; i < 10; i++)
+            {
+                var e = World.CreateEntity();
+                World.Set<ExampleComponent>(e, new ExampleComponent(0f));
+            }
 
             base.LoadContent();
         }
@@ -75,6 +108,7 @@ namespace FNAECSTemplate
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            ExampleRenderer.Draw();
             base.Draw(gameTime);
         }
     }

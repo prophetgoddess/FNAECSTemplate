@@ -4,3 +4,6 @@
 [submodule "MoonTools.ECS"]
 	path = MoonTools.ECS
 	url = https://gitea.moonside.games/MoonsideGames/MoonTools.ECS
+[submodule "SpriteFontPlus"]
+	path = SpriteFontPlus
+	url = https://github.com/rds1983/SpriteFontPlus

@@ -2,6 +2,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FNA\FNA.Core.csproj" />
     <ProjectReference Include="..\MoonTools.ECS\MoonTools.ECS.csproj" />
+    <ProjectReference Include="..\SpriteFontPlus\src\SpriteFontPlus.FNA.Core.csproj"/>
   </ItemGroup>
   <ItemGroup>
 		<None Include="*.targets" />
@@ -15,4 +16,5 @@
   </PropertyGroup>
   <Import Project="$(SolutionDir)NativeAOT_Console.targets" Condition="Exists('$(SolutionDir)NativeAOT_Console.targets')" />
   <Import Project="CopyFNALibs.targets" />
+  <Import Project="CopyContent.targets" />
 </Project>
