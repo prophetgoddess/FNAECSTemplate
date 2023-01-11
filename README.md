@@ -8,6 +8,8 @@ MoonTools.ECS is an entity component system library made by my friend evan. it i
 
 i also use [FontStashSharp](https://github.com/FontStashSharp/FontStashSharp) for text loading and rendering.
 
+within this template you will also find copious loving explanatory comments for people new to these tools. 
+
 ## prerequisites
 
 - [git](https://git-scm.com) (obviously)
