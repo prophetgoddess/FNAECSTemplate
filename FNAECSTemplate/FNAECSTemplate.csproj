@@ -6,7 +6,6 @@
   </ItemGroup>
   <ItemGroup>
 		<None Include="*.targets" />
-		<None Include="app.config" />
 	</ItemGroup>
   <PropertyGroup>
     <OutputType>Exe</OutputType>
