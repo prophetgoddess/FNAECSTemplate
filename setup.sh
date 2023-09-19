@@ -30,6 +30,9 @@ sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Components/Components.cs
 sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Messages/Messages.cs
 sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Relations/Relations.cs
 sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Renderers/ExampleRenderer.cs
+sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Utility/InputHelper.cs
+sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Systems/Input.cs
+
 
 mv "FNAECSTemplate.sln" "${name}.sln"
 mv "FNAECSTemplate/FNAECSTemplate.csproj" "FNAECSTemplate/${name}.csproj"

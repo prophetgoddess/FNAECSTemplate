@@ -2,7 +2,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FNA\FNA.Core.csproj" />
     <ProjectReference Include="..\MoonTools.ECS\MoonTools.ECS.csproj" />
-    <ProjectReference Include="..\FontStashSharp\src\XNA\FontStashSharp.FNA.Core.csproj"/>
+    <ProjectReference Include="..\FontStashSharp\src\XNA\FontStashSharp.FNA.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
 		<None Include="*.targets" />
@@ -14,6 +14,6 @@
     <Platforms>x64</Platforms>
   </PropertyGroup>
   <Import Project="$(SolutionDir)NativeAOT_Console.targets" Condition="Exists('$(SolutionDir)NativeAOT_Console.targets')" />
-  <Import Project="CopyLibs.targets"/>
-  <Import Project="CopyContent.targets"/>
+  <Import Project="CopyLibs.targets" />
+  <Import Project="CopyContent.targets" />
 </Project>
