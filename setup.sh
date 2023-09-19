@@ -26,7 +26,9 @@ sed -i -e "s/FNAECSTemplate/${name}/g" .vscode/tasks.json
 sed -i -e "s/Game1/${name}/g" FNAECSTemplate/Game1.cs
 sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Game1.cs
 sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Systems/ExampleSystem.cs
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Components/ExampleComponent.cs
+sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Components/Components.cs
+sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Messages/Messages.cs
+sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Relations/Relations.cs
 sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Renderers/ExampleRenderer.cs
 
 mv "FNAECSTemplate.sln" "${name}.sln"
