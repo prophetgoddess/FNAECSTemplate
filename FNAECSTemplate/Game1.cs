@@ -7,6 +7,7 @@ using FNAECSTemplate.Systems;
 using FNAECSTemplate.Components;
 using FNAECSTemplate.Renderers;
 using FontStashSharp;
+using Content;
 
 namespace FNAECSTemplate
 {
@@ -22,7 +23,6 @@ namespace FNAECSTemplate
         static ExampleRenderer? ExampleRenderer;
 
         SpriteBatch SpriteBatch;
-        FontSystem FontSystem;
 
         [STAThread]
         internal static void Main()
@@ -63,19 +63,10 @@ namespace FNAECSTemplate
             */
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            /*
-            this is from FontStashSharp. it allows us to load a font and render it at any 
-            size we like, complete with effects like blurring and stroke. 
-            you can add more than one font to a FontSystem if you have different fonts
-            for different languages. FontStashSharp will pick the first font that
-            has the characters you're trying to draw, and will otherwise draw the Unicode Tofu (little rectangle)
-            */
-            FontSystem = new FontSystem();
-            FontSystem.AddFont(File.ReadAllBytes(
-                    Path.Combine(
-                        Content.RootDirectory, "opensans.ttf"
-                    )
-                ));
+            Textures.Initialize(Content);
+            Fonts.Initialize(Content);
+            SFX.Initialize(Content);
+            Songs.Initialize(Content);
 
             /*
             SYSTEMS
@@ -93,7 +84,7 @@ namespace FNAECSTemplate
             */
 
             //same as above, but for the renderer
-            ExampleRenderer = new ExampleRenderer(World, SpriteBatch, FontSystem);
+            ExampleRenderer = new ExampleRenderer(World, SpriteBatch);
 
             /*
             ENTITIES
@@ -115,7 +106,6 @@ namespace FNAECSTemplate
         }
 
 
-
         protected override void Update(GameTime gameTime)
         {
             /*
@@ -125,7 +115,6 @@ namespace FNAECSTemplate
             but moontools.ecs does not. this lets you have more control
             over the order systems run in, and whether they run at all.
             */
-
             ExampleSystem.Update(gameTime.ElapsedGameTime);
             World.FinishUpdate(); //always call this at the end of your update function.
             base.Update(gameTime);

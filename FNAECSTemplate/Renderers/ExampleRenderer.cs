@@ -23,12 +23,10 @@ namespace FNAECSTemplate.Renderers
     {
         private Filter ExampleFilter { get; }
         private SpriteBatch SpriteBatch { get; }
-        private FontSystem FontSystem { get; }
 
-        public ExampleRenderer(World world, SpriteBatch spriteBatch, FontSystem fontSystem) : base(world)
+        public ExampleRenderer(World world, SpriteBatch spriteBatch) : base(world)
         {
             SpriteBatch = spriteBatch;
-            FontSystem = fontSystem;
             ExampleFilter = FilterBuilder //for information about this, see Systems/ExampleSystem.cs
                 .Include<ExampleComponent>()
                 .Build();
@@ -67,9 +65,10 @@ namespace FNAECSTemplate.Renderers
                 and display the value of the example property while setting the font color
                 to be white if the property is 1, black if it's 0, and various greys in between.
                 */
+
                 SpriteBatch.DrawString(
-                    FontSystem.GetFont(64),
-                    String.Format("{0}: {1}", example.ID, component.ExampleProperty),
+                    Content.Fonts.Opensans.GetFont(64),
+                    string.Format("{0}: {1}", example.ID, component.ExampleProperty),
                     new Vector2(0, y),
                     new Color(component.ExampleProperty, component.ExampleProperty, component.ExampleProperty)
                 );

@@ -1,3 +1,3 @@
 namespace FNAECSTemplate.Components;
 
-public readonly record struct ExampleComponent();
+public readonly record struct ExampleComponent(float ExampleProperty);
