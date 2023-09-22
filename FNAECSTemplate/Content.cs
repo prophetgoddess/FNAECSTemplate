@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 
-namespace Content;
+namespace FNAECSTemplate.Content;
 public static class Textures
 {
     public static void Initialize(ContentManager content)
@@ -23,7 +23,7 @@ public static class Fonts
         Opensans = new FontSystem();
         Opensans.AddFont(File.ReadAllBytes(
             Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), content.RootDirectory, @"opensans.ttf"
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), content.RootDirectory, @"Fonts/opensans.ttf"
             )
         ));
     }
@@ -38,5 +38,16 @@ public static class Songs
 {
     public static void Initialize(ContentManager content)
     {
+    }
+}
+
+public static class AllContent
+{
+    public static void Initialize(ContentManager content)
+    {
+        Textures.Initialize(content);
+        Fonts.Initialize(content);
+        SFX.Initialize(content);
+        Songs.Initialize(content);
     }
 }

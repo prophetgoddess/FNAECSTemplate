@@ -54,7 +54,21 @@ public class Program
     using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Media;
 
-    namespace Content;
+    namespace {0}.Content;
+    ";
+
+    static string AllContent =
+    @"
+    public static class AllContent
+    {
+        public static void Initialize(ContentManager content)
+        {
+            Textures.Initialize(content);
+            Fonts.Initialize(content);
+            SFX.Initialize(content);
+            Songs.Initialize(content);
+        }
+    }
     ";
 
     static string Initializer =
@@ -103,6 +117,21 @@ public class Program
     @"{1} = content.Load<Song>(""{0}"");
     ";
 
+    static string GetRelativePath(string sourceFolder, string path)
+    {
+        var name = Path.GetFileName(Path.GetDirectoryName(sourceFolder));
+        var parent = Directory.GetParent(path);
+        var relativePath = Path.GetFileNameWithoutExtension(path);
+
+        while (parent.Name != name)
+        {
+            relativePath = Path.Join(parent.Name, relativePath);
+            parent = parent.Parent;
+        }
+
+        return relativePath.Replace('\\', '/');
+    }
+
     static void GetTextures(StringBuilder fileContents, string sourceFolder)
     {
         var textureAtlases = Directory.GetFiles(sourceFolder, "*.json", SearchOption.AllDirectories);
@@ -141,7 +170,7 @@ public class Program
             );
 
             fileContents.Append(string.Format(
-                LoadTexture, data.Name, textInfo.ToTitleCase(Regex.Replace(data.Name, @"\s+", string.Empty))
+                LoadTexture, GetRelativePath(sourceFolder, textureAtlas), textInfo.ToTitleCase(Regex.Replace(data.Name, @"\s+", string.Empty))
             ));
         }
 
@@ -167,7 +196,9 @@ public class Program
         foreach (var font in fonts)
         {
             var name = textInfo.ToTitleCase(Regex.Replace(Path.GetFileNameWithoutExtension(font), @"\s+", string.Empty));
-            fileContents.Append(string.Format(LoadFont, Path.GetFileNameWithoutExtension(font), name));
+            var parent = Directory.GetParent(font).Name;
+            fileContents.Append(string.Format(LoadFont, GetRelativePath(sourceFolder, font), name));
+
         }
 
         fileContents.Append("}\n}\n");
@@ -193,7 +224,7 @@ public class Program
         foreach (var s in sfx)
         {
             var name = textInfo.ToTitleCase(Regex.Replace(Path.GetFileNameWithoutExtension(s), @"\s+", string.Empty));
-            fileContents.Append(string.Format(LoadSFX, Path.GetFileName(s), name));
+            fileContents.Append(string.Format(LoadSFX, GetRelativePath(sourceFolder, s), name));
         }
 
         fileContents.Append("}\n}\n");
@@ -219,7 +250,7 @@ public class Program
         foreach (var song in songs)
         {
             var name = textInfo.ToTitleCase(Regex.Replace(Path.GetFileNameWithoutExtension(song), @"\s+", string.Empty));
-            fileContents.Append(string.Format(LoadSong, Path.GetFileName(song), name));
+            fileContents.Append(string.Format(LoadSong, GetRelativePath(sourceFolder, song), name));
         }
 
         fileContents.Append("}\n}\n");
@@ -228,13 +259,29 @@ public class Program
 
     public static void Main(string[] args)
     {
-        if (args.Length < 2)
+        if (args.Length < 3)
         {
-            Console.WriteLine("Usage: ContentImporter.exe <path_to_source_directory> <path_to_destination_file>");
+            Console.WriteLine("Usage: ContentImporter.exe <path_to_project_file> <path_to_source_directory> <path_to_destination_file>");
             return;
         }
 
-        var sourceFolder = args[0];
+        var projectFile = args[0];
+        if (File.Exists(projectFile))
+        {
+            var targetAttributes = File.GetAttributes(projectFile);
+            if ((targetAttributes & FileAttributes.Directory) == FileAttributes.Directory)
+            {
+                Console.WriteLine("ERROR: target must be a file");
+                return;
+            }
+        }
+        else
+        {
+            Console.WriteLine("ERROR: project files does not exist");
+            return;
+        }
+
+        var sourceFolder = args[1];
         var sourceAttributes = File.GetAttributes(sourceFolder);
         if ((sourceAttributes & FileAttributes.Directory) != FileAttributes.Directory)
         {
@@ -242,7 +289,7 @@ public class Program
             return;
         }
 
-        var targetFile = args[1];
+        var targetFile = args[2];
         if (File.Exists(targetFile))
         {
             var targetAttributes = File.GetAttributes(targetFile);
@@ -259,14 +306,22 @@ public class Program
 
 
         var fileContents = new StringBuilder();
-        fileContents.Append(Header);
+        fileContents.Append(string.Format(Header, Path.GetFileNameWithoutExtension(projectFile)));
 
         GetTextures(fileContents, sourceFolder);
         GetFonts(fileContents, sourceFolder);
         GetSFX(fileContents, sourceFolder);
         GetSongs(fileContents, sourceFolder);
 
+        fileContents.Append(AllContent);
+
         File.WriteAllText(targetFile, fileContents.ToString());
+
+        Console.WriteLine("Content loaded, formatting file...");
+
+        System.Diagnostics.Process.Start("cmd.exe", string.Format(
+            "/C dotnet format {0} --include {1}", projectFile, targetFile
+        ));
     }
 
 }

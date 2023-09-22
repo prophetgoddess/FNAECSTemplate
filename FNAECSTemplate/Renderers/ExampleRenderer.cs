@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MoonTools.ECS;
 using FNAECSTemplate.Components;
 using FontStashSharp;
+using FNAECSTemplate.Content;
 
 namespace FNAECSTemplate.Renderers
 {
@@ -67,7 +68,7 @@ namespace FNAECSTemplate.Renderers
                 */
 
                 SpriteBatch.DrawString(
-                    Content.Fonts.Opensans.GetFont(64),
+                    Fonts.Opensans.GetFont(64),
                     string.Format("{0}: {1}", example.ID, component.ExampleProperty),
                     new Vector2(0, y),
                     new Color(component.ExampleProperty, component.ExampleProperty, component.ExampleProperty)

@@ -7,7 +7,7 @@ using FNAECSTemplate.Systems;
 using FNAECSTemplate.Components;
 using FNAECSTemplate.Renderers;
 using FontStashSharp;
-using Content;
+using FNAECSTemplate.Content;
 
 namespace FNAECSTemplate
 {
@@ -63,11 +63,7 @@ namespace FNAECSTemplate
             */
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Textures.Initialize(Content);
-            Fonts.Initialize(Content);
-            SFX.Initialize(Content);
-            Songs.Initialize(Content);
-
+            AllContent.Initialize(Content);
             /*
             SYSTEMS
             */
