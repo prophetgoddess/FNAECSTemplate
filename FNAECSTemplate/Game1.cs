@@ -89,7 +89,7 @@ namespace FNAECSTemplate
             for (int i = 0; i < 10; i++)
             {
                 var e = World.CreateEntity();
-                World.Set<ExampleComponent>(e, new ExampleComponent(0f));
+                World.Set(e, new ExampleComponent(0f));
             }
 
             base.LoadContent();
