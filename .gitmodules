@@ -7,3 +7,6 @@
 [submodule "FontStashSharp"]
 	path = FontStashSharp
 	url = https://github.com/FontStashSharp/FontStashSharp
+[submodule "ContentImporter"]
+	path = ContentImporter
+	url = https://github.com/prophetgoddess/ContentImporter
