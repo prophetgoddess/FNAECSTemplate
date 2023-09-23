@@ -28,8 +28,7 @@ within this template you will also find copious loving explanatory comments for 
 based primarily on [darkerbit's FNA template](https://github.com/darkerbit/FNATemplate), which ships with dear imgui but uses .NET framework instead of .NET core so you can't use it with moontools ecs without some fiddling. 
 
 ## license
-
-ANTI-CAPITALIST SOFTWARE LICENSE (v 1.4)
+[ANTI-CAPITALIST SOFTWARE LICENSE](https://anticapitalist.software/) (v 1.4)
 
 Copyright © 2023 Cassandra Lugo
 
