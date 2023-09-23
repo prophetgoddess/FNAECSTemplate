@@ -20,7 +20,7 @@ namespace FNAECSTemplate.Renderers
     there are advantages to both ([lcd soundsystem voice] advantages! advantages!),
     but the monolith-style renderer can be more useful in a 3D context.
     */
-    public class ExampleRenderer : MoonTools.ECS.Renderer
+    public class ExampleRenderer : Renderer
     {
         private Filter ExampleFilter { get; }
         private SpriteBatch SpriteBatch { get; }

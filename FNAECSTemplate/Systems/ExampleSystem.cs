@@ -1,6 +1,7 @@
 using System;
 using MoonTools.ECS;
 using FNAECSTemplate.Components;
+using FNAECSTemplate.Messages;
 
 
 namespace FNAECSTemplate.Systems
@@ -38,7 +39,8 @@ namespace FNAECSTemplate.Systems
                 in the component store. we have to call Set() to update the component store so that
                 other systems can read our changes and they'll persist across frames.
                 */
-                Set(example, new ExampleComponent(rnd.NextSingle()));
+                foreach (var input in ReadMessages<InputAction>())
+                    Set(example, new ExampleComponent(rnd.NextSingle()));
             }
         }
     }

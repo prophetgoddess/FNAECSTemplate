@@ -19,8 +19,9 @@ namespace FNAECSTemplate
         the World is the place where all our entities go.
         */
         static World World { get; } = new World();
-        static ExampleSystem? ExampleSystem;
-        static ExampleRenderer? ExampleRenderer;
+        static Input Input;
+        static ExampleSystem ExampleSystem;
+        static ExampleRenderer ExampleRenderer;
 
         SpriteBatch SpriteBatch;
 
@@ -74,6 +75,7 @@ namespace FNAECSTemplate
             it doesn't matter what order you create the systems in, we'll specify in what order they run later.
             */
             ExampleSystem = new ExampleSystem(World);
+            Input = new Input(World);
 
             /*
             RENDERERS
@@ -111,6 +113,7 @@ namespace FNAECSTemplate
             but moontools.ecs does not. this lets you have more control
             over the order systems run in, and whether they run at all.
             */
+            Input.Update(gameTime.ElapsedGameTime); //always update this before anything that takes inputs
             ExampleSystem.Update(gameTime.ElapsedGameTime);
             World.FinishUpdate(); //always call this at the end of your update function.
             base.Update(gameTime);
