@@ -21,7 +21,7 @@ within this template you will also find copious loving explanatory comments for 
 - clone this repository into a folder with the name of your project by running `git clone https://github.com/prophetgoddess/FNAECSTemplate <PROJECTNAME>`
 - `cd` into that directory and run `setup.sh`. if you're on windows, i recommend using git bash for this. this should rename the project folder, solution, file, and namespace according to your project name, in addition to downloading the required dlls and installing all the required submodules from FNA. 
 - open the folder in visual studio code, and push `F5` to build the project. you should be greeted with the cornflower blue of success.
-- you can update the dependencies by running `git submodule update --init --recursive`.
+- you can update the dependencies by running `git submodule update --init --remote --recursive`.
 
 ## credits
 
