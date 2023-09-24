@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-namespace FNAECSTemplate.Utility;
+namespace ShmupTutorial.Utility;
 public static class Rando
 {
     static Random Rand { get; } = new Random();
@@ -41,6 +41,12 @@ public static class Rando
     public static int IntInclusive(int min, int max)
     {
         return (int)MathF.Floor(Value * (max - min + 1) + min);
+    }
+
+    public static Vector2 OnUnitCircle()
+    {
+        float theta = Value * MathF.PI * 2.0f;
+        return new Vector2(MathF.Cos(theta), MathF.Sin(theta));
     }
 
     public static Vector3 InsideUnitSphere()
