@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-namespace ShmupTutorial.Utility;
+namespace FNAECSTemplate.Utility;
 public static class Rando
 {
     static Random Rand { get; } = new Random();
