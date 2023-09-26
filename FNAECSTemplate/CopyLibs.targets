@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<ItemGroup Condition=" '$(OS)' == 'Windows_NT' ">
+	<ItemGroup Condition="$([MSBuild]::IsOsPlatform('Windows'))">
 		<Content Include="..\libs\x64\*.dll">
 			<Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
-	<ItemGroup Condition=" '$(OS)' != 'Windows_NT' ">
+	<ItemGroup Condition="$([MSBuild]::IsOsPlatform('Linux'))">
 		<Content Include="..\libs\lib64\*.*">
 			<Link>lib64\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup Condition="$([MSBuild]::IsOsPlatform('OSX'))">
+		<Content Include="..\libs\osx\*.dylib">
+      <!-- NB: these are x86-64 libs; your build script muse use an x64 dotnet install -->
+			<Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>

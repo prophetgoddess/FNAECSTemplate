@@ -19,22 +19,25 @@ git submodule update --init --remote --recursive
 echo -e "What is your project name?"
 read name
 
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/FNAECSTemplate.csproj
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate.sln
-sed -i -e "s/FNAECSTemplate/${name}/g" .vscode/launch.json
-sed -i -e "s/FNAECSTemplate/${name}/g" .vscode/tasks.json
-sed -i -e "s/Game1/${name}/g" FNAECSTemplate/Game1.cs
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Game1.cs
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Systems/ExampleSystem.cs
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Components/Components.cs
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Messages/Messages.cs
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Relations/Relations.cs
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Renderers/ExampleRenderer.cs
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Utility/InputHelper.cs
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Systems/Input.cs
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Utility/Rando.cs
-sed -i -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Content.cs
+# BSD sed (macOS) requres a backup extension for sed when using -i
+# gnu sed (linux) requires no space between -i and the extension
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/FNAECSTemplate.csproj
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate.sln
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" .vscode/launch.json
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" .vscode/tasks.json
+sed -i'.temp-bak' -e "s/Game1/${name}/g" FNAECSTemplate/Game1.cs
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Game1.cs
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Systems/ExampleSystem.cs
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Components/Components.cs
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Messages/Messages.cs
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Relations/Relations.cs
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Renderers/ExampleRenderer.cs
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Utility/InputHelper.cs
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Systems/Input.cs
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Utility/Rando.cs
+sed -i'.temp-bak' -e "s/FNAECSTemplate/${name}/g" FNAECSTemplate/Content.cs
 
+find . -name "*.temp-bak" -type f -delete
 
 mv "FNAECSTemplate.sln" "${name}.sln"
 mv "FNAECSTemplate/FNAECSTemplate.csproj" "FNAECSTemplate/${name}.csproj"
