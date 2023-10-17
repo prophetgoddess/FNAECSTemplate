@@ -4,3 +4,6 @@ obj/
 out/
 /packages/
 inputs.py
+DesignTimeBuild/
+FileContentIndex/
+v17/
