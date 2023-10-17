@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
-using FNAECSTemplate.Utility;
 using MoonTools.ECS;
 using System.Text;
 using FNAECSTemplate.Messages;
+using FNAECSTemplate.Utility;
 
-namespace FNAECSTemplate.Systems;
+namespace VisualNovelTutorial.Systems;
 
 public enum Actions
 {
@@ -114,39 +114,6 @@ public class Input : MoonTools.ECS.System
                 if (System.MathF.Abs(v) > 0.0f)
                 {
                     value = v;
-
-                    switch (ActionStates[action])
-                    {
-                        case ActionState.Off:
-                            ActionStates[action] = ActionState.Pressed;
-                            break;
-                        case ActionState.Pressed:
-                            ActionStates[action] = ActionState.Held;
-                            break;
-                        case ActionState.Held:
-                            break;
-                        case ActionState.Released:
-                            ActionStates[action] = ActionState.Pressed;
-                            break;
-                    }
-                    break;
-                }
-                else
-                {
-                    switch (ActionStates[action])
-                    {
-                        case ActionState.Off:
-                            break;
-                        case ActionState.Pressed:
-                            ActionStates[action] = ActionState.Released;
-                            break;
-                        case ActionState.Held:
-                            ActionStates[action] = ActionState.Released;
-                            break;
-                        case ActionState.Released:
-                            ActionStates[action] = ActionState.Off;
-                            break;
-                    }
                 }
             }
 
@@ -156,44 +123,37 @@ public class Input : MoonTools.ECS.System
                 if (System.MathF.Abs(v) > 0.0f)
                 {
                     value += v;
-                    switch (ActionStates[action])
-                    {
-                        case ActionState.Off:
-                            ActionStates[action] = ActionState.Pressed;
-                            break;
-                        case ActionState.Pressed:
-                            ActionStates[action] = ActionState.Held;
-                            break;
-                        case ActionState.Held:
-                            break;
-                        case ActionState.Released:
-                            ActionStates[action] = ActionState.Pressed;
-                            break;
-                    }
-                    break;
-                }
-                else
-                {
-                    switch (ActionStates[action])
-                    {
-                        case ActionState.Off:
-                            break;
-                        case ActionState.Pressed:
-                            ActionStates[action] = ActionState.Released;
-                            break;
-                        case ActionState.Held:
-                            ActionStates[action] = ActionState.Released;
-                            break;
-                        case ActionState.Released:
-                            ActionStates[action] = ActionState.Off;
-                            break;
-                    }
                 }
             }
 
+            ActionState newState = ActionStates[action];
             if (System.MathF.Abs(value) > 0.0f)
             {
-                Send(new InputAction(value, action, ActionStates[action]));
+                newState = ActionStates[action] switch
+                {
+                    ActionState.Pressed => ActionState.Held,
+                    ActionState.Off => ActionState.Pressed,
+                    ActionState.Released => ActionState.Pressed,
+                    ActionState.Held => ActionState.Held,
+                    _ => ActionState.Held
+                };
+            }
+            else
+            {
+                newState = ActionStates[action] switch
+                {
+                    ActionState.Pressed => ActionState.Released,
+                    ActionState.Off => ActionState.Off,
+                    ActionState.Released => ActionState.Off,
+                    ActionState.Held => ActionState.Released,
+                    _ => ActionState.Off
+                };
+            }
+
+            if (newState != ActionStates[action])
+            {
+                ActionStates[action] = newState;
+                Send(new InputAction(value, action, newState));
             }
         }
     }
