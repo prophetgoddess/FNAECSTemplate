@@ -1,5 +1,3 @@
-using System;
-using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MoonTools.ECS;
@@ -22,8 +20,8 @@ namespace FNAECSTemplate.Renderers
     */
     public class ExampleRenderer : Renderer
     {
-        private Filter ExampleFilter { get; }
-        private SpriteBatch SpriteBatch { get; }
+        private Filter ExampleFilter;
+        private SpriteBatch SpriteBatch;
 
         public ExampleRenderer(World world, SpriteBatch spriteBatch) : base(world)
         {

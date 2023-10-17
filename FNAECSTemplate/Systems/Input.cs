@@ -5,7 +5,7 @@ using System.Text;
 using FNAECSTemplate.Messages;
 using FNAECSTemplate.Utility;
 
-namespace VisualNovelTutorial.Systems;
+namespace FNAECSTemplate.Systems;
 
 public enum Actions
 {

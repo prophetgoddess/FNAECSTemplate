@@ -18,10 +18,11 @@ namespace FNAECSTemplate
         /*
         the World is the place where all our entities go.
         */
-        static World World { get; } = new World();
-        static Input Input;
-        static ExampleSystem ExampleSystem;
-        static ExampleRenderer ExampleRenderer;
+        World World { get; } = new World();
+
+        Input Input;
+        ExampleSystem ExampleSystem;
+        ExampleRenderer ExampleRenderer;
 
         SpriteBatch SpriteBatch;
 
@@ -62,7 +63,7 @@ namespace FNAECSTemplate
             it's much more efficient to send one huge batch than to send sprites piecemeal. 
             See more in the Renderers/ExampleRenderer.cs. 
             */
-            SpriteBatch = new SpriteBatch(GraphicsDevice);
+            SpriteBatch = new(GraphicsDevice);
 
             AllContent.Initialize(Content);
             /*
@@ -74,15 +75,15 @@ namespace FNAECSTemplate
             you can pass in information that these systems might need to their constructors.
             it doesn't matter what order you create the systems in, we'll specify in what order they run later.
             */
-            ExampleSystem = new ExampleSystem(World);
-            Input = new Input(World);
+            ExampleSystem = new(World);
+            Input = new(World);
 
             /*
             RENDERERS
             */
 
             //same as above, but for the renderer
-            ExampleRenderer = new ExampleRenderer(World, SpriteBatch);
+            ExampleRenderer = new(World, SpriteBatch);
 
             /*
             ENTITIES
