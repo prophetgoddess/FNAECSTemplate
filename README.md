@@ -19,13 +19,13 @@ within this template you will also find copious loving explanatory comments for 
 ## instructions
 
 - clone this repository into a folder with the name of your project by running `git clone https://github.com/prophetgoddess/FNAECSTemplate <PROJECTNAME>`
-- `cd` into that directory and run `setup.sh`. if you're on windows, i recommend using git bash for this. this should rename the project folder, solution, file, and namespace according to your project name, in addition to downloading the required dlls and installing all the required submodules from FNA. 
+- `cd` into that directory and run `setup.sh`. if you're on windows, i recommend using git bash for this. this should rename the project folder, solution, file, and namespace according to your project name, in addition to downloading the required dlls and installing all the required submodules from FNA. if you're on windows, you may get an error message with the phrase `InitializeSecurityContext failed`: follow the instructions in [this issue](https://github.com/prophetgoddess/FNAECSTemplate/issues/3) to resolve. 
 - open the folder in visual studio code, and push `F5` to build the project. you should be greeted with the cornflower blue of success.
 - you can update the dependencies by running `git submodule update --init --remote --recursive`.
 
 ## credits
 
-based primarily on [darkerbit's FNA template](https://github.com/darkerbit/FNATemplate), which ships with dear imgui but uses .NET framework instead of .NET core so you can't use it with moontools ecs without some fiddling. 
+based primarily on [darkerbit's FNA template](https://github.com/darkerbit/FNATemplate).
 
 ## license
 [ANTI-CAPITALIST SOFTWARE LICENSE](https://anticapitalist.software/) (v 1.4)
