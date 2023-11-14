@@ -150,11 +150,10 @@ public class Input : MoonTools.ECS.System
                 };
             }
 
-            if (newState != ActionStates[action])
-            {
-                ActionStates[action] = newState;
-                Send(new InputAction(value, action, newState));
-            }
+
+            ActionStates[action] = newState;
+            Send(new InputAction(value, action, newState));
+
         }
     }
 }
