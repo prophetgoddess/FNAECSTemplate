@@ -12,7 +12,7 @@ this is a system. systems can read and modify components and entities.
 public class ExampleSystem : MoonTools.ECS.System
 {
     private Filter ExampleFilter { get; }
-    private Random rnd { get; } = new Random();
+    private System.Random rnd { get; } = new System.Random();
 
     public ExampleSystem(World world) : base(world)
     {
